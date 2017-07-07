@@ -7,11 +7,10 @@ export default class PCFooter extends React.Component {
             year:(new Date()).getFullYear()
         };
     }
-
     render() {
         return (
             <header class="header">
-                
+                123123
             </header>
         );
     };

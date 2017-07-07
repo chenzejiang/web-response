@@ -18,8 +18,9 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
+      loaders: ['react-hot', 'babel?plugins[]=react-html-attrs'],
       include: path.join(__dirname, 'src')
+
     },
     //下面是使用 ant-design 的配置文件
     { test: /\.css$/, loader: 'style-loader!css-loader' }
