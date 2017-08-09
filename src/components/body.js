@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Index extends React.Component {
+export default class Body extends React.Component {
     constructor() {
         super();
         this.state = {
