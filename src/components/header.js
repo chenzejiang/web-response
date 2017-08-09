@@ -1,6 +1,5 @@
 import React from 'react';
-
-export default class PCFooter extends React.Component {
+export default class Header extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -10,7 +9,17 @@ export default class PCFooter extends React.Component {
     render() {
         return (
             <header class="header">
-                123123
+                <div class="header_l">
+                    <div class="logo">Response</div>
+                    <div class="input_box">
+                        <input type="text" defaultValue="https://www.chenzejiang.com" class="header_input_url" id="header_input_url" />
+                        <span></span>
+                    </div>
+                </div>
+                <div class="header_r">
+                    <a href="javascript:void(0);"><i></i>Github</a>
+                    <a href="javascript:void(0);"><i></i>Blog</a>
+                </div>
             </header>
         );
     };
