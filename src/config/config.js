@@ -4,7 +4,7 @@ export const DEVICES_LIST = [
 		name: 'iphone 4',
 		width:320,
 		height:480,
-        direction:0,
+        direction:true,
         type:"ios"
 	},
     {
@@ -12,7 +12,7 @@ export const DEVICES_LIST = [
         name: 'iphone 5',
         width:320,
         height:568,
-        direction:0,
+        direction:true,
         type:"ios"
     },
     {
@@ -20,7 +20,7 @@ export const DEVICES_LIST = [
         name: 'iphone 6',
         width:375,
         height:667,
-        direction:0,
+        direction:true,
         type:"ios"
     },
     {
@@ -28,7 +28,7 @@ export const DEVICES_LIST = [
         name: 'iPhone 7 Plus',
         width:414,
         height:736,
-        direction:0,
+        direction:true,
         type:"ios"
     },
     {
@@ -36,7 +36,7 @@ export const DEVICES_LIST = [
         name: 'Galaxy S5',
         width:360,
         height:640,
-        direction:0,
+        direction:true,
         type:"andriod"
     },
     {
@@ -44,7 +44,7 @@ export const DEVICES_LIST = [
         name: 'Nexus 4',
         width:384,
         height:640,
-        direction:0,
+        direction:true,
         type:"andriod"
     },
     {
@@ -52,7 +52,7 @@ export const DEVICES_LIST = [
         name: 'iPad',
         width:768,
         height:1024,
-        direction:0,
+        direction:true,
         type:"ios"
     }
 ];

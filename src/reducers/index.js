@@ -30,15 +30,19 @@
 
 
 import { combineReducers } from 'redux';
-import { ADD_COUNT, ADD_PERSON, DELETE_PERSON, FETCH_START, FETCH_SUCCESS, FETCH_FAUILE, CHANGE_URL, SHOW_DEVICE} from '../actions/index';
+import { ADD_COUNT, ADD_PERSON, DELETE_PERSON, FETCH_START, FETCH_SUCCESS, FETCH_FAUILE, CHANGE_URL, SHOW_DEVICE, CHANGE_DIRECTION} from '../actions/index';
+import { DEVICES_LIST } from '../config/config.js';
 
 // store中可以定义页面中的初始状态
 const initialState = {
     count:0,   // count = 0
     count2:2,
     show:'all',  // all, ios, andriod
-    href:'http://m.7m.com.cn/login/login.html'
+    href:'http://m.7m.com.cn/login/login.html',
+    deviceList:DEVICES_LIST // 设备信息列表
 };
+
+console.log(initialState);
 
 // count的初始状态以及处理之后返回的state值
 function count(state = initialState.count, action) {
@@ -55,6 +59,26 @@ function count2(state = initialState.count2, action) {
     switch (action.type) {
         case ADD_COUNT :
             return state + 1;
+        default :
+            return state;
+    }
+}
+
+function deviceList(state = initialState.deviceList, action) {
+    switch (action.type) {
+        case CHANGE_DIRECTION :
+            var _obj = state;
+            _obj[action.num]["direction"] = !_obj[action.num]["direction"];
+            console.log("reducers===========");
+            console.log(_obj);
+
+            // console.log(_data);
+            // var buf = {};
+            var buf = {};
+            var obj = Object.assign({}, state, buf);
+            console.log(obj);
+            // console.log(action.num,"==num");
+            return _obj;
         default :
             return state;
     }
@@ -82,7 +106,8 @@ const Reducers = combineReducers({
     count,
     count2,
     show,
-    href
+    href,
+    deviceList
 });
 
 export default Reducers;

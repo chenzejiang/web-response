@@ -62,6 +62,7 @@ export const DELETE_PERSON = 'DELETE_PERSON';
 
 export const CHANGE_URL = 'CHANGE_URL';  // 改变链接地址
 export const SHOW_DEVICE = 'SHOW_DEVICE'; // 显示 ios android all
+export const CHANGE_DIRECTION = 'CHANGE_DIRECTION';  // 改变某个设备的方向
 // async
 // 异步的请求定义
 export const FETCH_START = 'FETCH_START';
@@ -90,6 +91,15 @@ export function changeShow(show) {
         show
     }
 }
+
+// 改变设备的方向
+export function changeDircetion(num) {
+    return {
+        type : CHANGE_DIRECTION,
+        num
+    }
+}
+
 
 //export function addPerson(person) {
 //    return {
