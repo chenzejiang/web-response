@@ -4,7 +4,7 @@ import { changeShow } from '../actions';
 
 const BoxLeft = React.createClass({
     render() {
-            let { show } = this.props;
+        let { show } = this.props;
         return (
             <div class="box_l">
                 <a class="btn" href="javascript:void(0)" onClick={this.changeShow.bind(this,'all')} >ALL</a>

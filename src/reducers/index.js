@@ -28,7 +28,6 @@
 //
 //export default todoApp
 
-
 import { combineReducers } from 'redux';
 import { ADD_COUNT, ADD_PERSON, DELETE_PERSON, FETCH_START, FETCH_SUCCESS, FETCH_FAUILE, CHANGE_URL, SHOW_DEVICE, CHANGE_DIRECTION} from '../actions/index';
 import { DEVICES_LIST } from '../config/config.js';
@@ -69,14 +68,14 @@ function deviceList(state = initialState.deviceList, action) {
         case CHANGE_DIRECTION :
             var _obj = state;
             _obj[action.num]["direction"] = !_obj[action.num]["direction"];
-            console.log("reducers===========");
+            // console.log("reducers===========");
             console.log(_obj);
 
             // console.log(_data);
             // var buf = {};
-            var buf = {};
-            var obj = Object.assign({}, state, buf);
-            console.log(obj);
+            //var buf = {};
+            //var obj = Object.assign({}, state, buf);
+            //console.log(obj);
             // console.log(action.num,"==num");
             return _obj;
         default :
