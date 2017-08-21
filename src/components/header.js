@@ -30,7 +30,6 @@ const Header = React.createClass({
 });
 
 function select(state) {
-    console.log(state);
     return {
         href : state.href
     }

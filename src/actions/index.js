@@ -93,10 +93,10 @@ export function changeShow(show) {
 }
 
 // 改变设备的方向
-export function changeDircetion(num) {
+export function changeDircetion(deviceList) {
     return {
         type : CHANGE_DIRECTION,
-        num
+        deviceList
     }
 }
 

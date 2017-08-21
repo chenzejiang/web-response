@@ -5,6 +5,9 @@ const aaa = React.createClass({
     render() {
         let {href, show, deviceList} = this.props;
         let that = this;
+        console.log("==========================");
+        console.log(this.props);
+        console.log(deviceList);
         // 显示设备
         function showDevice(show = ''){
             switch (show){
@@ -18,19 +21,23 @@ const aaa = React.createClass({
                     return 'show_all';
             }
         }
+        //console.log("66666");
+        //console.log(deviceList);
         var commentNodes = deviceList.map(function(item,i) {
-            let iframe_width = item["direction"] === true ? item["width"] : item["height"];
-            let iframe_height = item["direction"] === false ? item["width"] : item["height"];
+            let iframe_width = item["direction"] == true ? item["width"] : item["height"];
+            let iframe_height = item["direction"] == false ? item["width"] : item["height"];
+            //console.log("????????????????????????????????");
+            //console.log(item,"???????");
             return (
                 <div class={"page "+item["type"]} key={i}>
                     <div class="page_top">
                         <div class="page_title">
-                            <span class="page_title_name">{item["name"]}</span>
+                            <span class="page_title_name">{item["name"]}+{String(item["direction"])}</span>
                             <span class="page_title_size">({item["width"]} x {item["height"]})</span>
                         </div>
                         {/* 页面按钮控制 */}
                         <div class="page_btn">
-                            <span class="btn_1" onClick={that.changeDircetion(i)}></span>
+                            <span class="btn_1" onClick={that.changeDircetion.bind(this,i)}></span>
                             <span class="btn_2"></span>
                             <span class="btn_3"></span>
                         </div>
@@ -52,10 +59,13 @@ const aaa = React.createClass({
     },
     // 改变方向
     changeDircetion(_num){
-        //return '2';
-        //console.log(_num,"99999");
-        //let { dispatch } = this.props;
-        //dispatch(changeDircetion(_num));
+
+        let { dispatch,deviceList } = this.props;
+        console.log(deviceList);
+        let _obj = deviceList;
+        _obj[_num]["direction"] = !_obj[_num]["direction"];
+        //console.log(_obj);
+        dispatch(changeDircetion(_obj));
     }
 });
 

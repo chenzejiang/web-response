@@ -66,18 +66,16 @@ function count2(state = initialState.count2, action) {
 function deviceList(state = initialState.deviceList, action) {
     switch (action.type) {
         case CHANGE_DIRECTION :
-            var _obj = state;
-            _obj[action.num]["direction"] = !_obj[action.num]["direction"];
-            // console.log("reducers===========");
-            console.log(_obj);
+            //console.log(action.deviceList);
+            var buf = {};
+            buf['deviceList'] = action.deviceList;
 
-            // console.log(_data);
-            // var buf = {};
-            //var buf = {};
-            //var obj = Object.assign({}, state, buf);
-            //console.log(obj);
-            // console.log(action.num,"==num");
-            return _obj;
+            console.log(Object.assign({}, state, buf));
+            console.log(state);
+            console.log(action.deviceList);
+            console.log("11111111111111111111111111111111111111111");
+            //return Object.assign({}, state, buf);
+            return action.deviceList;
         default :
             return state;
     }
