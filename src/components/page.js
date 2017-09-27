@@ -3,11 +3,8 @@ import { connect } from 'react-redux';
 import { changeDircetion, addCount, changeZoom } from '../actions';
 const Page = React.createClass({
     render() {
-        let {href, show, deviceList, count, zoom} = this.props;
+        let {href, show, deviceList, zoom} = this.props;
         let that = this;
-        console.log("==========================");
-        console.log(this.props);
-        console.log(deviceList);
         // 显示设备
         function showDevice(show = ''){
             switch (show){
@@ -21,9 +18,6 @@ const Page = React.createClass({
                     return 'show_all';
             }
         }
-        console.log("zoom",zoom);
-        //console.log("66666");
-        //console.log(deviceList);
         var commentNodes = this.props.deviceList.map(function(item,i) {
             let iframe_width = item["direction"] == true ? item["width"] : item["height"];  // iframe宽度
             let iframe_height = item["direction"] == false ? item["width"] : item["height"]; // iframe高度
@@ -38,14 +32,14 @@ const Page = React.createClass({
                 <div style={pageStyle} class={"page "+item["type"]} key={i}>
                     <div class="page_top">
                         <div class="page_title">
-                            <span class="page_title_name">{item["name"]}+{zoom}</span>
+                            <span class="page_title_name">{item["name"]}</span>
                             <span class="page_title_size">({item["width"]} x {item["height"]})</span>
                         </div>
                         {/* 页面按钮控制 */}
                         <div class="page_btn">
                             <span class="btn_1" onClick={that.changeDircetion.bind(this,i)}>1</span>
                             <span class="btn_2" onClick={that.addCount.bind(this)}>2</span>
-                            <span class="btn_3">3</span>
+                            <span class="btn_3" onClick={that.refresh.bind(this,i)}>3</span>
                         </div>
                     </div>
                     <div class="iframe_box">
@@ -58,29 +52,27 @@ const Page = React.createClass({
         return (
             <div id="page_box" class={showDevice(show)}>
                 {commentNodes}
-
             </div>
         );
     },
-
     // 改变方向
-    changeDircetion(_num){
-        let { dispatch,deviceList,count } = this.props;
+    changeDircetion(num){
+        let { dispatch,deviceList } = this.props;
         console.log(deviceList);
         console.log("changeDircetionchangeDircetionchangeDircetionchangeDircetionchangeDircetionchangeDircetion");
         let _obj = deviceList;
-        _obj[_num]["direction"] = !_obj[_num]["direction"];
-        dispatch(changeDircetion(_obj));
+        dispatch(changeDircetion(num));
         dispatch(addCount());
-        // 刷新iframe
-        document.getElementById('phone_iframe_'+_num).src = document.getElementById('phone_iframe_'+_num).src
+    },
+    // 刷新iframe
+    refresh(num){
+        document.getElementById('phone_iframe_'+num).src = document.getElementById('phone_iframe_'+num).src
     },
     addCount() {
-        let { dispatch, count } = this.props;
+        let { dispatch } = this.props;
         dispatch(addCount());
     }
 });
-
 function select(state) {
     return {
         count : state.count,

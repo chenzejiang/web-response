@@ -3,13 +3,10 @@ import { connect } from 'react-redux';
 import { changeUrl } from '../actions';
 const Header = React.createClass({
     render() {
-        let {href,deviceList} = this.props;
-        console.log(this.props);
-        //console
         return (
             <header class="header">
                 <div class="header_l">
-                    <div class="logo">Response+{String(this.props.deviceList[0]["direction"])}</div>
+                    <div class="logo">Response</div>
                     <div class="input_box">
                         <input ref='urlInput' type="text" defaultValue={this.props.href} class="header_input_url" id="header_input_url" />
                         <span onClick={this.changeUrl} class="change_href"></span>
@@ -22,17 +19,17 @@ const Header = React.createClass({
             </header>
         )
     },
+    // 改变url
     changeUrl() {
-        let _val = document.getElementById("header_input_url").value;
+        let _url = document.getElementById("header_input_url").value;
         let { dispatch } = this.props;
-        dispatch(changeUrl(_val));
+        dispatch(changeUrl(_url));
     }
 });
 
 function select(state) {
     return {
-        href : state.href,
-        deviceList : state.deviceList
+        href : state.href
     }
 }
 

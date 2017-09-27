@@ -7,9 +7,13 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
+        {/* 头部 */}
         <Header></Header>
+        {/* 搜索界面 */}
+        <Body></Body>
+        {/* 操作界面 */}
         <Box></Box>
-        {/*<Body></Body>*/}
+
       </div>
     );
   }

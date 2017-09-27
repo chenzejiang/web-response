@@ -1,28 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeShow, changeZoom } from '../actions';
+import { changeShow, changeZoom, changeAllDirection, addCount } from '../actions';
 import $ from 'jquery';
 
 const BoxLeft = React.createClass({
     getInitialState: function(){
         return {currentIndex: 0}
     },
-
     render() {
         let { show } = this.props;
         return (
             <div class="box_l">
+
+                <p class="btn_detail">设备：</p>
                 <div class="btn_list">
                     <a class="btn on" href="javascript:void(0)" onClick={this.changeShow.bind(this,'all')} >ALL</a>
                     <a class="btn" href="javascript:void(0)" onClick={this.changeShow.bind(this,'andriod')} >Andriod</a>
                     <a class="btn" href="javascript:void(0)" onClick={this.changeShow.bind(this,'ios')} >IOS</a>
                 </div>
 
+                <p class="btn_detail">缩放：</p>
                 <div class="btn_list">
                     <a class="btn on" href="javascript:void(0)" onClick={this.changeZoom.bind(this,25)} >25</a>
                     <a class="btn" href="javascript:void(0)" onClick={this.changeZoom.bind(this,50)} >50</a>
                     <a class="btn" href="javascript:void(0)" onClick={this.changeZoom.bind(this,75)} >75</a>
                     <a class="btn" href="javascript:void(0)" onClick={this.changeZoom.bind(this,100)} >100</a>
+                </div>
+
+                <p class="btn_detail">方向：</p>
+                <div class="btn_list">
+                    <a class="btn on" href="javascript:void(0)" onClick={this.changeAllDirection.bind(this,true)} >竖屏</a>
+                    <a class="btn" href="javascript:void(0)" onClick={this.changeAllDirection.bind(this,false)} >横屏</a>
                 </div>
             </div>
         )
@@ -48,6 +56,14 @@ const BoxLeft = React.createClass({
         var $ele = $(ele);
         $ele.addClass("on");
         $ele.siblings("a").removeClass("on");
+    },
+    // 改变所有设备的方向
+    changeAllDirection(direction, event){
+        // 改变高亮
+        this.changeBtn(event.target);
+        // 改变redux
+        let { dispatch } = this.props;
+        dispatch(changeAllDirection(direction));
     },
     // 组件加载完成
     componentDidMount(){
@@ -95,7 +111,8 @@ const BoxLeft = React.createClass({
 
 function select(state) {
     return {
-        show : state.show
+        show : state.show,
+        count : state.count
     }
 }
 export default connect(select)(BoxLeft);

@@ -4,7 +4,6 @@ import { changeDircetion } from '../actions';
 import Page from './page';  // 页面模块
 const BoxRight = React.createClass({
     render() {
-        let { deviceList, show, href } = this.props;
         return (
             <div class="box_r">
                 <Page></Page>
@@ -14,9 +13,7 @@ const BoxRight = React.createClass({
 })
 function select(state) {
     return {
-        href : state.href,
-        show : state.show,
-        deviceList : state.deviceList
+
     }
 }
 export default connect(select)(BoxRight);

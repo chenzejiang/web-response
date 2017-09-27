@@ -64,6 +64,8 @@ export const CHANGE_URL = 'CHANGE_URL';  // 改变链接地址
 export const SHOW_DEVICE = 'SHOW_DEVICE'; // 显示 ios android all
 export const CHANGE_DIRECTION = 'CHANGE_DIRECTION';  // 改变某个设备的方向
 export const CHANGE_ZOOM = 'CHANGE_ZOOM';  // 改变缩放
+export const CHANGE_ALL_DIRECTION = 'CHANGE_ALL_DIRECTION'; // 把所有设备方向改变
+export const CHANGE_SHOW_INDEX = 'CHANGE_SHOW_INDEX'; // 是否显示首页
 
 // async
 // 异步的请求定义
@@ -94,13 +96,39 @@ export function changeShow(show) {
     }
 }
 
-// 改变设备的方向
-export function changeDircetion(deviceList) {
+// 改变某个设备的方向
+export function changeDircetion(num) {
     return {
         type : CHANGE_DIRECTION,
-        deviceList
+        num:num
     }
 }
+
+// 是否显示首页
+export function changShowIndex(show) {
+    return {
+        type : CHANGE_SHOW_INDEX,
+        show
+    }
+}
+
+
+
+// 改全部设备的方向
+export function changeAllDirection(direction) {
+    return {
+        type : CHANGE_ALL_DIRECTION,
+        direction
+    }
+}
+
+//export function changeDircetion(deviceList) {
+//    return {
+//        type : CHANGE_DIRECTION,
+//        deviceList:deviceList
+//    }
+//}
+
 
 // 改变缩放
 export function changeZoom(zoom) {
