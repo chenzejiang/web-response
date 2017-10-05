@@ -105,10 +105,10 @@ export function changeDircetion(num) {
 }
 
 // 是否显示首页
-export function changShowIndex(show) {
+export function changeShowIndex(showIndex) {
     return {
         type : CHANGE_SHOW_INDEX,
-        show
+        showIndex
     }
 }
 

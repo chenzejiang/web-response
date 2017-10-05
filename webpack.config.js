@@ -1,8 +1,10 @@
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  //devtool: 'cheap-module-eval-source-map',
+  devtool: false,
   entry: [
     'webpack-hot-middleware/client',
     './src/index'
@@ -10,7 +12,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: ''
   },
   module: {
     loaders: [
@@ -19,17 +21,10 @@ module.exports = {
         loaders: ['react-hot', 'babel?plugins[]=react-html-attrs'],
         include: path.join(__dirname, 'src')
       },
-    //下面是使用 ant-design 的配置文件
-      // { 
-      //   test: /\.css$/, 
-      //   loader: 'style-loader!css-loader?modules!postcss-loader' }
-
       { 
         test: /\.css$/, 
         loaders:['style-loader','css-loader?plugins[]=postcss-loader']
       }
-
-
 
       // {
       //   test:/\.css$/,
@@ -46,15 +41,14 @@ module.exports = {
   // ],
 
   plugins: [
-        // new webpack.LoaderOptionsPlugin({
-        //     options:{
-        //          postcss: [
-        //             require('autoprefixer')//调用autoprefixer插件
-        //           ],
-        //     }
-        // }),
+    // new webpack.LoaderOptionsPlugin({
+    //     options:{
+    //          postcss: [
+    //             require('autoprefixer')//调用autoprefixer插件
+    //           ],
+    //     }
+    // }),
 
-    
     // // 浏览器加前缀
     // new webpack.LoaderOptionsPlugin({
     //     options: {
@@ -79,6 +73,12 @@ module.exports = {
     //         }
     //     }
     // }),
+
+    new HtmlWebpackPlugin({
+      template: './index.html',
+      inject: 'body',
+      filename: './index.html'
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
         $: "jquery",

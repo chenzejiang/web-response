@@ -60,8 +60,8 @@ input[type=search]::-webkit-search-cancel-button { -webkit-appearance: none; }
 .abs-right { position: absolute; right: 0; }
 .zoom { zoom: 1; }
 .hidden { visibility: hidden; }
-.show { display: block; }
-.hide { display: none; }
+body .show { display: block; }
+body .hide { display: none; }
 /*长度高度*/
 .w10 { width: 10px; }
 .w { width: 100%; }
